@@ -8,14 +8,17 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.infogen.</groupId>
+	<groupId>com.infogen.samples</groupId>
 	<artifactId>kubernetes</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kubernetes</name>
 	<description>Demo project for Spring Boot and kubernetes</description>
+	<packaging>pom</packaging>
+
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
+		<spring-cloud.version>Hoxton.SR4</spring-cloud.version>
 	</properties>
 
 	<dependencies>
@@ -35,15 +38,37 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.dekorate</groupId>
+			<artifactId>kubernetes-spring-starter</artifactId>
+			<version>0.11.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR4</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
+	<modules>
+		<module>company</module>
+		<module>department</module>
+		<module>employee</module>
+	</modules>
 </project>
